@@ -1,0 +1,13 @@
+COMPILER := gcc
+
+CLASSES = $(shell ls class*.c)
+NAMES = $(basename $(CLASSES))
+TESTS = $(addprefix test_, $(NAMES))
+
+all : $(TESTS) 
+
+test_%: % 
+	./$* cinput$*.input coutput$*.output
+
+class%: class%.c
+	${COMPILER} $^ -o $@

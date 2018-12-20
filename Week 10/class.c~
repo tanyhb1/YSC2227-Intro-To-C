@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main(int argc, char** argv){
+  int A;
+  int B, C;
+  if (argc != 3){
+    printf("Please enter two arguments, one input and one output.\n");
+  }
+
+  FILE* fd = fopen(argv[1], "r");
+  if (!fd) {printf("could not open the file.\n"); exit (1);};
+
+  fscanf(fd, "%d", &A);
+
+  int stor[A];
+
+  for (int i = 0; i < A; i++){
+    fscanf(fd, "%d %d", &B, &C);
+    stor[i] = C + B;
+    printf("%d\n", stor[i]);
+  }
+
+  fclose(fd);
+
+  FILE* fc = fopen(argv[2], "w");
+  if (!fc) {printf("could not open the file.\n"); exit (1);};
+  for (int i = 0; i < A; i++){
+    fprintf(fc, "%d ", stor);
+  }
+  fclose(fc);
+
+  return 0;
+      
+}

@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+/*data*/
+int A = 0;
+/*BSS*/
+int B;
+/*data*/
+int C = 0;
+/*BSS*/
+int D;
+
+/*stack */
+int main (int argc, char ** argv){
+/*heap */
+  int * E = malloc (sizeof(int) * 2);
+  return 0;  
+}
